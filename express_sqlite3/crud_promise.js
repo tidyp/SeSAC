@@ -41,10 +41,10 @@ const insertUser = () => {
   });
 };
 
-// 데이터삽입
+// 데이터수정
 const updateUser = () => {
   const updateUser = {
-    id: 1,
+    id: 13,
     username: "park",
     email: "park@gmail.com",
   };
@@ -99,7 +99,7 @@ const readUser = () => {
 const main = async () => {
   await createTable();
   await insertUser();
-  // await updateUser()
+  await updateUser()
   // await delUser()
   await readUser();
   db.close();
