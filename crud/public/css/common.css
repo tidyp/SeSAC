@@ -1,0 +1,9 @@
+body{
+  background-color: #007acc;
+}
+
+#userTable{
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff
+}

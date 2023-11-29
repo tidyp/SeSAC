@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+    <link rel="stylesheet" href="/views/styles.css" />
+    <script src="/views/main.js"></script>
+  </head>
+  <body>
+    <h1>User Detail</h1>
+    <table>
+      <tr class="header">
+        {% for el in header %}
+        <th>{{ el }}</th>
+        {% endfor %}
+      </tr>
+      <tr>
+        <td>{{ userIndex.Id }}</td>
+        <td>{{ userIndex.Name }}</td>
+        <td>{{ userIndex.Gender }}</td>
+        <td>{{ userIndex.Age }}</td>
+        <td>{{ userIndex.Birthdate }}</td>
+        <td>{{ userIndex.Address }}</td>
+      </tr>
+      </table>
+      <a href="../">Back to List</a>
+  </body>
+</html>

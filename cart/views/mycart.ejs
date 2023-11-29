@@ -1,0 +1,50 @@
+<%- include('includes/header.ejs') %>
+    <script src="/static/cart.js"></script>
+  </head>
+  <body>
+    <%- include('includes/navigation.ejs') %>
+    <main>
+      <% if (!emptyCart) { %>
+        <h1>장바구니에 상품이 없습니다.</h1>
+      <% } else { %>
+      <h2>장바구니 목록</h2>
+      <table id="cartTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <!-- <th>Image</th> -->
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Action</th>
+            <!-- <th></th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <% mycart.forEach(cart => { %>
+            <tr>
+              <td><%= cart.id %></td>
+              <td><%= cart.name %></td>
+              <td><%= cart.price %></td>
+              <td>
+                <%= cart.quantity %>
+                <button onclick=increaseItemBtn(<%= cart.id %>)>+</button>
+                <button onclick=decreaseItemBtn(<%= cart.id %>)>-</button>
+              </td>
+              <td>
+                <button onclick=delBtn(<%= cart.id %>)>Remove</button>
+              </td>
+            </tr>
+          <% }) %>
+          <tr>
+            <td colspan="3"></td>
+            <td>Total:</td>
+            <td><%= total %></td>
+          </tr>
+        </tbody>
+      </table>
+      <% } %>
+      <a href="/product">상품목록으로 이동</a>
+    </main>
+  </body>
+</html>

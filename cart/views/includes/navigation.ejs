@@ -1,0 +1,16 @@
+<div class="navi">
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/product">Products</a></li>
+      <li><a href="/mycart">MyCart</a></li>
+    </ul>
+    <ul>
+      <% if(isLogin) { %>
+      <li id="logout" onclick="logout()">Logout</li>
+      <% } else { %>
+      <li id="login"><a href="/login">Login</a></li>
+      <% } %>
+    </ul>
+  </nav>
+</div>

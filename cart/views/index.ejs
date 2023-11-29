@@ -1,0 +1,17 @@
+<%- include('includes/header.ejs') %>
+    <!-- <script src="/static/auth.js"></script> -->
+  </head>
+  <body>
+    <%- include('includes/navigation.ejs') %>
+    <main>
+      <% if(isLogin) { %>
+        <div id="profile">
+          <h2>Welcome, <span id="usernameSpan"><%= isLogin.username %></span>님!</h2>
+          <button id="loginBtn" onclick="logout()">Logout</button>
+        </div>
+      <% } else { %>
+       <h1>로그인 후 이용바랍니다.</h1>
+      <% } %>
+    </main>
+  </body>
+</html>

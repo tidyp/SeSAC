@@ -1,0 +1,28 @@
+<%- include('includes/header.ejs') %>
+    <script src="auth.js"></script>
+  </head>
+  <body>
+    <%- include('includes/navigation.ejs') %>
+    <main>
+      <% if(isLogin) { %>
+        <div id="profile">
+          <h2>Welcome, <span id="usernameSpan"><%= isLogin.username %></span>님!</h2>
+          <button id="loginBtn" onclick="logout()">Logout</button>
+        </div>
+      <% } else { %>
+        <div id="loginform">
+          <h1>로그인</h1>
+          <form>
+            <label for="username">username: </label>
+            <input id="username" name="username" type="text" />
+            <br />
+            <label for="password">password: </label>
+            <input id="password" name="password" type="password" />
+            <br />
+            <button type="button" id="loginBtn" onclick="login()">Login</button>
+          </form>
+        </div>
+      <% } %>
+    </main>
+  </body>
+</html>

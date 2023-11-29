@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./main.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <nav>
+      <a href="#">Home</a>
+      <a href="#">login</a>
+      <a href="/profile">profile</a>
+      <a href="/logout">logout</a>
+    </nav> -->
+    
+    <div id="login">
+      <h1>로그인</h1>
+      <form>
+        <label for="username">username: </label>
+        <input id="username" name="username" type="text" />
+        <br />
+        <label for="password">password: </label>
+        <input id="password" name="password" type="password" />
+        <br />
+        <button type="button"id="loginBtn" onclick="loginBtnHandler()">Login</button>
+      </form>
+    </div>
+    <div id="profile" style="display: none;">
+      <h2>Welcome, <span id="usernameSpan"></span>님!</h2>
+      <button id="loginBtn" onclick="logout()">Logout</button>
+    </div>
+  </body>
+</html>

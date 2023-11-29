@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" href="cal.css" />
+    <script async src="cal.js"></script>
+  </head>
+  <body>
+    <main>
+      <div id="display">
+        <input id="exp" value=""></input>
+        <input id="output" value="0"></input>
+        <!-- <input id="test" value="0"></input> -->
+      </div>
+      <div class="input">
+        <div id="nnum" class="button" onclick="oButton('+')"><span>+</span></div>
+        <div id="nnum" class="button" onclick="oButton('-')"><span>-</span></div>
+        <div id="nnum" class="button" onclick="oButton('*')"><span>*</span></div>
+        <div id="nnum" class="button" onclick="oButton('/')"><span>/</span></div>
+        <div class="button" onclick="nButton('7')"><span>7</span></div>
+        <div class="button" onclick="nButton('8')"><span>8</span></div>
+        <div class="button" onclick="nButton('9')"><span>9</span></div>
+        <div id="nnum" class="button" onclick="resultButton('=')"><span>=</span></div>
+        <div class="button" onclick="nButton('4')"><span>4</span></div>
+        <div class="button" onclick="nButton('5')"><span>5</span></div>
+        <div class="button" onclick="nButton('6')"><span>6</span></div>
+        <div id="nnum" class="button" onclick="delButton('C')"><span>C</span></div>
+        <div class="button" onclick="nButton('1')"><span>1</span></div>
+        <div class="button" onclick="nButton('2')"><span>2</span></div>
+        <div class="button" onclick="nButton('3')"><span>3</span></div>
+        <div class="button" onclick="nButton('0')"><span>0</span></div>
+      </div>
+    </main>
+    <section class="test">
+      <div class="testBtn1"><span>test1</span></div>
+      <div class="testBtn2"><span>test2</span></div>
+      <div class="testBtn3"><span>test3</span></div>
+      <div class="a">a</div>
+      <div class="b">b</div>
+    </section>
+  </body>
+</html>
