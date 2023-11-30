@@ -1,0 +1,41 @@
+main {
+  height: 1080px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* align-content: center; */
+}
+
+section {
+  height: 22%;
+  padding: 30px;
+  border: 1px solid #000;
+  border-radius: 10px;
+}
+
+form {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+form label,
+form input,
+form button {
+  margin: 8px;
+}
+form input {
+  padding: 10px;
+  border-radius: 2px;
+  border: 1px solid #000;
+}
+
+form button {
+  color: #fff;
+  padding: 5px;
+  width: 50px;
+  border: none;
+  border-radius: 2px;
+  background-color: #57ad5a;
+}
