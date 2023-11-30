@@ -41,7 +41,7 @@ app.use(
 //       return acc;
 //     }, {});
 
-// main
+// GET: / ----------------------------------------------------------
 app.get("/", (req, res) => {
 
   // 세션
@@ -75,7 +75,7 @@ app.get("/login", (req, res) => {
   res.render("login");
 });
 
-// login----------------------------------------------------------
+// POST: /login ----------------------------------------------------------
 app.post("/login", (req, res) => {
   const { username, password, checkbox } = req.body;
 
@@ -96,19 +96,18 @@ app.post("/login", (req, res) => {
       ]);
     }
     res.redirect("/");
-  } else if (req.headers.cookie) {
-    const cookies = req.headers.cookie;
-    console.log(cookies);
-    console.log(cookies.split(";"));
-  } else {
+    // 로그인 실패시 /login 리다이렉트 
+  }  else {
     res.redirect("/login");
   }
 });
 
-// logout
+// logout----------------------------------------------------------
 app.post("/logout", (req, res) => {
   console.log("로그아웃");
+  // 세션삭제
   req.session.destroy();
+  // 쿠키삭제
   res.clearCookie("idcookie");
   res.clearCookie("pwcookie");
   res.redirect("/");
