@@ -1,5 +1,6 @@
 import express from "express";
 import session from "express-session";
+import cookieParser from "cookie-parser";
 import path from "path";
 const rootDir = path.resolve();
 const app = express();
@@ -16,6 +17,7 @@ const users = [
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cookieParser());
 
 app.use("/", express.static(path.join(rootDir)));
 
@@ -30,28 +32,27 @@ app.use(
     },
   })
 );
-const parseCookies = (cookie = "") =>
-  cookie
-    .split(";")
-    .map((v) => v.split("="))
-    .reduce((acc, [k, v]) => {
-      acc[k.trim()] = decodeURIComponent(v);
-      return acc;
-    }, {});
+// const parseCookies = (cookie = "") =>
+//   cookie
+//     .split(";")
+//     .map((v) => v.split("="))
+//     .reduce((acc, [k, v]) => {
+//       acc[k.trim()] = decodeURIComponent(v);
+//       return acc;
+//     }, {});
 
 // main
 app.get("/", (req, res) => {
+
   // 세션
   const sessionLogin = req.session.checkLogin;
 
   // 쿠키
-  const cookieeee = parseCookies(req.headers.cookie);
+  // const cookieeee = parseCookies(req.headers.cookie);
+  const { idcookie, pwcookie } = req.cookies;
   const cookieLogin = users.find((user) => {
-    user.username === cookieeee.id && user.password === cookieeee.pw;
-    return (
-      user.username === cookieeee.idcookie &&
-      user.password === cookieeee.pwcookie
-    );
+    user.username === idcookie && user.password === pwcookie;
+    return user.username === idcookie && user.password === pwcookie;
   });
 
   // 로그인 세션 있으면 index 렌더링
@@ -106,7 +107,7 @@ app.post("/login", (req, res) => {
 
 // logout
 app.post("/logout", (req, res) => {
-  console.log('로그아웃')
+  console.log("로그아웃");
   req.session.destroy();
   res.clearCookie("idcookie");
   res.clearCookie("pwcookie");
