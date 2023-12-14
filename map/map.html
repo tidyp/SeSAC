@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin=""
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script
+      src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+      integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+      crossorigin=""
+    ></script>
+    <style>
+      #mapid {
+        width: 800px;
+        height: 800px;
+      }
+    </style>
+
+    <div id="mapid"></div>
+
+    <script>
+      const mymap = L.map("mapid").setView([37.5602916, 127.0645174], 16);
+
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution:
+          '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      }).addTo(mymap); // Fixed: Change 'map' to 'mymap'
+
+      var circle = L.circle([37.5602916, 127.0645174], {
+        color: "red",
+        fillColor: "#f03",
+        fillOpacity: 0.5,
+        radius: 200,
+      }).addTo(mymap);
+
+      var marker = L.marker([37.5602916, 127.0645174]).addTo(mymap);
+      var marker = L.marker([37.560746, 127.0662025]).addTo(mymap);
+      var marker = L.marker([37.5619091, 127.066306]).addTo(mymap);
+      var marker = L.marker([37.5633582, 127.0648429]).addTo(mymap);
+    </script>
+  </body>
+</html>
+
+<!-- https://www.google.com/maps/place/%EC%86%A1%EC%89%90%ED%94%84+%EC%9E%A5%EC%95%88%EC%A0%90/data=!4m6!3m5!1s0x357ca52840688607:0xfcda44535a5b190!8m2!3d37.5619091!4d127.066306!16s%2Fg%2F11h5pr_h23?entry=ttu -->
+<!-- https://www.google.com/maps/place/GS25%EC%9E%A5%EC%95%88%EC%84%B1%EA%B4%91%EC%A0%90/data=!4m6!3m5!1s0x357cbbdbf2735403:0xcdd2f73cd7d4541d!8m2!3d37.5633582!4d127.0648429!16s%2Fg%2F11l77krlgs?entry=ttu -->

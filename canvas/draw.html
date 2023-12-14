@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>캔버스</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <canvas id="myCanvas1" width="400" height="400"></canvas>
+    <canvas id="myCanvas2" width="400" height="400"></canvas>
+    <canvas id="myCanvas3" width="400" height="400"></canvas>
+    <canvas id="myCanvas4" width="400" height="400"></canvas>
+    <style>
+      canvas{
+        border: 1px solid #000;
+      }
+    </style>
+    <script>
+      const canvas = document.getElementById("myCanvas1");
+      const context = canvas.getContext("2d");
+
+      // box
+      context.fillStyle = "#11c7e6";
+      context.fillRect(50, 50, 100, 80);
+
+      // line
+      context.strokeStyle = "#af4e30";
+      context.lineWidth = 5;
+      context.beginPath();
+      context.moveTo(200, 50);
+      context.lineTo(300, 130);
+      context.stroke();
+
+      const canvas2 = document.getElementById("myCanvas2");
+      const context2 = canvas2.getContext("2d");
+
+      context2.fillText('Hello Canvas!', 50, 100)
+      context2.fillText('Hello Canvas!', 200, 300)
+
+      context2.fillStyle = '#4608ad'
+      context2.fillText('가나다라마', 250, 200)
+      context2.font = 'italic 20px Times New Roman'
+      context2.fillText('이탤릭체', 300, 100)
+
+
+
+
+
+
+
+
+
+
+
+
+      
+      const ctx = document.getElementById("myCanvas4");
+
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+          datasets: [
+            {
+              label: "# of Votes",
+              data: [12, 19, 3, 5, 2, 3],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

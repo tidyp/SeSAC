@@ -20,6 +20,6 @@ CREATE TABLE IF NOT EXISTS products(
 
 -- 상품 테이블 추가
 INSERT INTO products(name, cate, price) VALUES
-  ('product1', 'books', 3000),
-  ('product2', 'cups', 4000),
-  ('product3', 'books', 9000);
+  ('product 1', 'books', 3000),
+  ('product 2', 'cups', 4000),
+  ('product 3', 'books', 9000);

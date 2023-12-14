@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>autologin</title>
+  </head>
+  <body>
+    <main>
+      <% if(checkLogin ) { %>
+        <div id="profile">
+          <h2>Welcome, <span id="usernameSpan"><%= checkLogin.username %></span>님!</h2>
+          <form action="/logout" method="post">
+            <button>로그아웃</button>
+          </form>
+        </div>
+      <% } else { %>
+       <h1>로그인이 필요합니다.</h1>
+       <button><a href="/login">로그인페이지 이동</a></button>
+      <% } %>
+    </main>
+  </body>
+  </body>
+</html>

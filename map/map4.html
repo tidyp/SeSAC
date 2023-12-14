@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin=""
+    />
+    <style>
+      #mapid {
+        width: 800px;
+        height: 800px;
+      }
+    </style>
+    <script
+      src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+      integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+      crossorigin=""
+    ></script>
+  </head>
+  <body>
+    <label for="search">검색</label>
+    <input type="text" id="search" />
+    <button onclick="find()">찾기</button>
+    <br />
+    <br />
+    <div id="mapid"></div>
+
+    <script>
+      const mymap = L.map("mapid").setView(
+        [37.51984955, 126.94025163994804],
+        11
+      );
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution:
+          '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      }).addTo(mymap); // Fixed: Change 'map' to 'mymap'
+
+      const find = async () => {
+        const searchInput = document.getElementById("search").value;
+        await fetch(
+          `https://nominatim.openstreetmap.org/search?q=${searchInput}&format=json`
+        )
+          .then((res) => res.json())
+          // .then((data) => console.log(data));
+          // .then((data) => L.marker([data[0].lat, data[0].lon]).addTo(mymap))
+          .then((data) =>
+            data.forEach((el) => {
+              L.marker([el.lat, el.lon]).addTo(mymap);
+            })
+          );
+      };
+      find();
+    </script>
+  </body>
+</html>
+
+<!-- https://www.google.com/maps/place/%EC%86%A1%EC%89%90%ED%94%84+%EC%9E%A5%EC%95%88%EC%A0%90/data=!4m6!3m5!1s0x357ca52840688607:0xfcda44535a5b190!8m2!3d37.5619091!4d127.066306!16s%2Fg%2F11h5pr_h23?entry=ttu -->
+<!-- https://www.google.com/maps/place/GS25%EC%9E%A5%EC%95%88%EC%84%B1%EA%B4%91%EC%A0%90/data=!4m6!3m5!1s0x357cbbdbf2735403:0xcdd2f73cd7d4541d!8m2!3d37.5633582!4d127.0648429!16s%2Fg%2F11l77krlgs?entry=ttu -->
