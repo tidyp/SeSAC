@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>회원 가입</h1>
+    <div>
+      <form id="displayemail">
+        <label for="email">이메일</label>
+        <input type="text" name="email" id="email" />
+        <button type="button" id="sendEmail">인증 코드 발송</button>
+      </form>
+    </div>
+    <div>
+      <form id="displaycode" style="display: none">
+        <label for="code">인증 코드</label>
+        <input type="text" name="code" id="code" />
+        <button type="button" id="codeEmail">인증 코드 확인</button>
+      </form>
+    </div>
+    <br>
+    <div id="result"></div>
+    <script>
+      const emailBtn = document.getElementById("sendEmail");
+      emailBtn.addEventListener("click", () => {
+        const useremail = document.getElementById("email").value;
+        fetch("http://127.0.0.1:3000/mail", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email: useremail }),
+        });
+        document.getElementById("email").innerText = "";
+        document.getElementById("displayemail").style.display = "none";
+        document.getElementById("displaycode").style.display = "block";
+      });
+
+      const codeBtn = document.getElementById("codeEmail");
+      codeBtn.addEventListener("click", () => {
+        const authcode = document.getElementById("code").value;
+        fetch("http://127.0.0.1:3000/code", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ code: authcode }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            document.getElementById("result").innerHTML = data.message;
+          });
+        document.getElementById("code").innerText = "";
+        console.log(authcode);
+      });
+    </script>
+  </body>
+</html>
