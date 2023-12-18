@@ -44,3 +44,8 @@ app.use("/api/product", productRoutes);
 app.listen(port, () => {
   console.log(`${port} 실행 중...`);
 });
+
+
+'/api/auth/login'
+'/api/map/login'
+'/api/product/login'

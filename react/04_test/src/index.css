@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  font-size: 36px;
+}
+
+
+
+nav {
+  background-color: #1e1e1e;
+  
+}
+nav ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+
+nav ul li {
+  display: flex;
+  flex-direction: row;
+  width: 150px;
+  padding: 0 20px;
+  list-style: none;
+}
+nav ul li a{
+  color: #fffeff;
+  font-size: 48px;
+  text-decoration: none;
+}

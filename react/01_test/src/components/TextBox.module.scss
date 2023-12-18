@@ -1,0 +1,31 @@
+.containter {
+  height: 400px;
+  width: 400px;
+  border: 1px solid #3c3c3c66;
+  border-radius: 40px;
+  margin: 20px;
+  padding: 40px;
+  .tag1 {
+    display: inline;
+    padding: 1px;
+    color: #edb615;
+    background-color: #fff9d8;
+    padding: 0 20px;
+    border-radius: 16px;
+  }
+  .tag2 {
+    display: inline;
+    padding: 1px;
+    color: #656565;
+    background-color: #efefef;
+    padding: 0 20px;
+    border-radius: 16px;
+  }
+  span {
+    padding: 0 20px;
+  }
+  .footer {
+    display: flex;
+    flex-direction: row;
+  }
+}
