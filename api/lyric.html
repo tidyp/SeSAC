@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="lyric.js" defer></script>
+</head>
+
+<body>
+  <h2>가사로 노래찾기</h2>
+  <form>
+    <label>가사입력</label>
+    <input type="text" id="lyric" required>
+    <button type="button" onclick="searchLyrics()">검색</button>
+  </form>
+  <h2>가사 검색 결과</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>제목</th>
+        <th>아티스트</th>
+        <th>가사</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <div id="imgTags"></div>
+        <div id="title"></div>
+        <div id="artist"></div>
+        <div id="lyric"></div>
+      </tr>
+    </tbody>
+  </table>
+</body>
+
+</html>

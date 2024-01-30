@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>웹소켓</title>
+    <style>
+      #messageContainer {
+        width: 400px;
+        height: 400px;
+        overflow-y: auto;
+        border: 1px solid #000;
+        border-radius: 20px;
+        padding: 20px;
+        background-color: #4cc0f0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .message {
+        border: 1px solid;
+        border-radius: 20px;
+        display: inline-block;
+        padding: 10px 20px;
+        margin-bottom: 10px;
+        align-self: flex-end;
+      }
+
+      #sent {
+        display: block;
+        background-color: #ffcf48;
+        align-self: flex-end;
+        padding: 0 20px;
+        border-radius: 8px;
+        font-size: 24px;
+      }
+
+      #received {
+        background-color: #fff;
+        align-self: flex-start;
+        padding: 0 20px;
+        border-radius: 8px;
+        font-size: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="messageContainer"></div>
+    <input type="text" id="inputMessage" />
+    <button id="sendButton">전송</button>
+
+    <script>
+      // const socket = new WebSocket("ws:127.0.0.1:8080");          
+      const socket = new WebSocket("ws:192.168.100.123:8080");
+
+
+      socket.addEventListener("open", (event) => {
+        console.log("서버에 연결되었습니다.");
+      });
+
+      const sendMessage = (msg) => {
+        const messageObj = {
+          content: msg,
+        };
+        socket.send(JSON.stringify(messageObj));
+      };
+
+      socket.addEventListener("message", (event) => {
+        const message = JSON.parse(event.data);
+        displayMessage(message);
+        // Scroll to the bottom when a new message arrives
+        scrollToBottom();
+      });
+
+      const displayMessage = (message) => {
+        const messageContainer = document.getElementById("messageContainer");
+        const html = `<div class="message" id=${message.type}>${message.content}</div><br/>`;
+        messageContainer.insertAdjacentHTML("beforeend", html);
+      };
+
+      const scrollToBottom = () => {
+        const messageContainer = document.getElementById("messageContainer");
+        messageContainer.scrollTop = messageContainer.scrollHeight;
+      };
+
+      document.getElementById("sendButton").addEventListener("click", () => {
+        const message = document.getElementById("inputMessage").value;
+        sendMessage(message);
+        document.getElementById("inputMessage").value = "";
+      });
+    </script>
+  </body>
+</html>

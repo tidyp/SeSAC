@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="mycurrency.js" defer></script>
+</head>
+
+<body>
+  <h2>실시간 환율 계산기</h2>
+  <form action="">
+    <input type="number" id="amout" required>
+    <br>
+    <label for="fromCurrency">환전전 통화:</label>
+    <select id="fromCurrency">
+      <option value="KRW">KRW</option>
+      <option value="JPY">JPY</option>
+      <option value="USD">USD</option>
+    </select>
+    <label for="toCurrency">환전할 통화:</label>
+    <select id="toCurrency">
+      <option value="KRW">KRW</option>
+      <option value="JPY">JPY</option>
+      <option value="USD">USD</option>
+    </select>
+    <button type="button" onclick="calculateExchange()">환전</button>
+  </form>
+  <div id="result"></div>
+</body>
+
+</html>

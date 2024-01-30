@@ -1,0 +1,7 @@
+{
+  "server": {
+    "baseDir": "./",
+    "index": "mycurrency.html",
+    "port": 3100
+  }
+}

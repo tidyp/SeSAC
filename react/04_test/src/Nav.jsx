@@ -12,6 +12,9 @@ const Nav = () => {
           <li>
             <Link to="/memo">Memo</Link>
           </li>
+          <li>
+            <Link to="/todo">ToDo</Link>
+          </li>
         </ul>
       </nav>
       <Outlet />
